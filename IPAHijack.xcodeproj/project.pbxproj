@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1105966D2AAC8C4F000EF452 /* IPACatcher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPACatcher.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1105966D2AAC8C4F000EF452 /* IPAHijack.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IPAHijack.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		110596702AAC8C4F000EF452 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		110596722AAC8C50000EF452 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		110596742AAC8C50000EF452 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		110596642AAC8C4F000EF452 = {
 			isa = PBXGroup;
 			children = (
-				1105966F2AAC8C4F000EF452 /* IPACatcher */,
+				1105966F2AAC8C4F000EF452 /* IPAHijack */,
 				1105966E2AAC8C4F000EF452 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,12 +58,12 @@
 		1105966E2AAC8C4F000EF452 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1105966D2AAC8C4F000EF452 /* IPACatcher.app */,
+				1105966D2AAC8C4F000EF452 /* IPAHijack.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		1105966F2AAC8C4F000EF452 /* IPACatcher */ = {
+		1105966F2AAC8C4F000EF452 /* IPAHijack */ = {
 			isa = PBXGroup;
 			children = (
 				110596702AAC8C4F000EF452 /* AppDelegate.swift */,
@@ -79,15 +79,15 @@
 				11FFAC3B2AACC75000C8EC80 /* Constants.swift */,
 				119E3DFC2AAD0CEC00681E54 /* InteractiveLinkTextView.swift */,
 			);
-			path = IPACatcher;
+			path = IPAHijack;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1105966C2AAC8C4F000EF452 /* IPACatcher */ = {
+		1105966C2AAC8C4F000EF452 /* IPAHijack */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 110596812AAC8C53000EF452 /* Build configuration list for PBXNativeTarget "IPACatcher" */;
+			buildConfigurationList = 110596812AAC8C53000EF452 /* Build configuration list for PBXNativeTarget "IPAHijack" */;
 			buildPhases = (
 				110596692AAC8C4F000EF452 /* Sources */,
 				1105966A2AAC8C4F000EF452 /* Frameworks */,
@@ -97,9 +97,9 @@
 			);
 			dependencies = (
 			);
-			name = IPACatcher;
+			name = IPAHijack;
 			productName = IPACatcher;
-			productReference = 1105966D2AAC8C4F000EF452 /* IPACatcher.app */;
+			productReference = 1105966D2AAC8C4F000EF452 /* IPAHijack.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,14 +110,14 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1420;
-				LastUpgradeCheck = 1420;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					1105966C2AAC8C4F000EF452 = {
 						CreatedOnToolsVersion = 14.2;
 					};
 				};
 			};
-			buildConfigurationList = 110596682AAC8C4F000EF452 /* Build configuration list for PBXProject "IPACatcher" */;
+			buildConfigurationList = 110596682AAC8C4F000EF452 /* Build configuration list for PBXProject "IPAHijack" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -130,7 +130,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1105966C2AAC8C4F000EF452 /* IPACatcher */,
+				1105966C2AAC8C4F000EF452 /* IPAHijack */,
 			);
 		};
 /* End PBXProject section */
@@ -222,6 +222,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -282,6 +283,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -310,7 +312,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IPACatcher/Info.plist;
+				INFOPLIST_FILE = IPAHijack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,7 +324,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emran.IPACatcher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emran.IPAHijack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -343,7 +345,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 4LBD36HY9T;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = IPACatcher/Info.plist;
+				INFOPLIST_FILE = IPAHijack/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -355,7 +357,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 13.4;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.emran.IPACatcher;
+				PRODUCT_BUNDLE_IDENTIFIER = com.emran.IPAHijack;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
@@ -369,7 +371,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		110596682AAC8C4F000EF452 /* Build configuration list for PBXProject "IPACatcher" */ = {
+		110596682AAC8C4F000EF452 /* Build configuration list for PBXProject "IPAHijack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1105967F2AAC8C53000EF452 /* Debug */,
@@ -378,7 +380,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		110596812AAC8C53000EF452 /* Build configuration list for PBXNativeTarget "IPACatcher" */ = {
+		110596812AAC8C53000EF452 /* Build configuration list for PBXNativeTarget "IPAHijack" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				110596822AAC8C53000EF452 /* Debug */,

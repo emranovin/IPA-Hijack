@@ -1,6 +1,5 @@
 //
 //  AccountDeeplinkHandler.swift
-//  IPACatcher
 //
 //  Created by Emran Novin on 9/9/23.
 //
