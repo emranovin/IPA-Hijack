@@ -12,14 +12,23 @@ class MainViewController: UIViewController {
     @IBOutlet weak var interactiveLinkTextView: InteractiveLinkTextView!
     
     
-    var url: URL = URL(string: "https://Sample.com/App.ipa")! {
+    var url: URL = URL(string: "https://placeholder.com/app.ipa")! {
         didSet {
             renderAttributedString(url)
         }
     }
     
+    lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
+        return DeeplinkCoordinator(handlers: [
+            PlistDeeplinkHandler(self),
+            TestDeeplinkHandler(self)
+        ])
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        deeplinkCoordinator.handleURL(URL(string: "itms-services://?action=download-manifest&url=https://placeholder.com/manifest.plist")!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -30,10 +39,12 @@ class MainViewController: UIViewController {
     }
     
     func renderAttributedString(_ url: URL) {
-        let fullString = NSMutableAttributedString(string: "URL: \n", attributes: nil)
-        let hyperLinkString = NSMutableAttributedString(string: url.absoluteString, attributes:[NSAttributedString.Key.link: url])
-        fullString.append(hyperLinkString)
-        interactiveLinkTextView.attributedText = fullString
-        interactiveLinkTextView.font = .systemFont(ofSize: 32)
+        DispatchQueue.main.async { [weak self] in
+            let fullString = NSMutableAttributedString(string: "URL: \n", attributes: nil)
+            let hyperLinkString = NSMutableAttributedString(string: url.absoluteString, attributes:[NSAttributedString.Key.link: url])
+            fullString.append(hyperLinkString)
+            self?.interactiveLinkTextView.attributedText = fullString
+            self?.interactiveLinkTextView.font = .systemFont(ofSize: 32)
+        }
     }
 }

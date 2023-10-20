@@ -36,6 +36,8 @@ final class TestDeeplinkHandler: DeeplinkHandlerProtocol {
             viewController.view.backgroundColor = .cyan
         }
         
-        rootViewController?.present(viewController, animated: true)
+        DispatchQueue.main.async {
+            self.rootViewController?.present(viewController, animated: true)
+        }
     }
 }
