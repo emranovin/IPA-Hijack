@@ -6,44 +6,76 @@
 
 import UIKit
 
+enum State {
+    case none
+    case isProcessing
+    case successful(URL)
+    case failed(Error)
+}
+
 class MainViewController: UIViewController {
     
-    @IBOutlet weak var interactiveLinkTextView: InteractiveLinkTextView!
+    @IBOutlet private weak var interactiveLinkTextView: InteractiveLinkTextView!
+    @IBOutlet private weak var loadingIndicator: UIActivityIndicatorView!
     
+    @IBAction private func didTapOnButton() {
+        guard let url = URL(string: interactiveLinkTextView.text) else { return }
+        let isHandling = deeplinkCoordinator?.handleURL(url) ?? false
+        state = isHandling ? .isProcessing : .none
+    }
     
-    var url: URL = URL(string: "https://placeholder.com/app.ipa")! {
-        didSet {
+    var deeplinkCoordinator: DeeplinkCoordinatorProtocol?
+    
+    private var state: State = .none {
+        didSet { handleState() }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        state = .none
+    }
+    
+    private func handleState() {
+        switch state {
+        case .none:
+            showMessage("Enter a valid URL, ")
+            
+        case .isProcessing:
+            loadingIndicator.startAnimating()
+            showMessage("Is Processing ...")
+            
+        case .successful(let url):
+            loadingIndicator.stopAnimating()
             renderAttributedString(url)
+            
+        case .failed(let error):
+            loadingIndicator.stopAnimating()
+            showMessage(error.localizedDescription)
         }
     }
     
-    lazy var deeplinkCoordinator: DeeplinkCoordinatorProtocol = {
-        return DeeplinkCoordinator(handlers: [
-            PlistDeeplinkHandler(self),
-            TestDeeplinkHandler(self)
-        ])
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        deeplinkCoordinator.handleURL(URL(string: "itms-services://?action=download-manifest&url=https://placeholder.com/manifest.plist")!)
+    private func renderAttributedString(_ url: URL) {
+        let fullString = NSMutableAttributedString(string: "URL: \n", attributes: nil)
+        let hyperLinkString = NSMutableAttributedString(string: url.absoluteString, attributes:[NSAttributedString.Key.link: url])
+        fullString.append(hyperLinkString)
+        interactiveLinkTextView.attributedText = fullString
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        renderAttributedString(url)
-        interactiveLinkTextView.isUserInteractionEnabled = true
-        interactiveLinkTextView.isEditable = false
+    private func showMessage(_ message: String) {
+        interactiveLinkTextView.text = message
     }
-    
-    func renderAttributedString(_ url: URL) {
+}
+
+extension MainViewController: PlistHandlerProtocol {
+    func didHandleURL(_ url: URL) {
         DispatchQueue.main.async { [weak self] in
-            let fullString = NSMutableAttributedString(string: "URL: \n", attributes: nil)
-            let hyperLinkString = NSMutableAttributedString(string: url.absoluteString, attributes:[NSAttributedString.Key.link: url])
-            fullString.append(hyperLinkString)
-            self?.interactiveLinkTextView.attributedText = fullString
-            self?.interactiveLinkTextView.font = .systemFont(ofSize: 32)
+            self?.state = .successful(url)
+        }
+    }
+    
+    func didEncounterError(_ error: Error) {
+        DispatchQueue.main.async { [weak self] in
+            self?.state = .failed(error)
         }
     }
 }

@@ -6,6 +6,11 @@
 
 import Foundation
 
+protocol PlistHandlerProtocol: AnyObject {
+    func didHandleURL(_ url: URL)
+    func didEncounterError(_ error: Error)
+}
+
 protocol DeeplinkHandlerProtocol {
     func canOpenURL(_ url: URL) -> Bool
     func openURL(_ url: URL)
